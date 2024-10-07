@@ -20,7 +20,7 @@ public class Main {
             System.out.println("Tačna lozinka! Evo tajne poruke:");
             System.out.println("Tajna poruka: Dobrodošli u svijet programiranja u Javi!");
         } else {
-            System.out.println("Pogrešna lozinka. Pristup odbijen.");
+            System.out.println("Pogrešna lozinka.");
         }
 
 
