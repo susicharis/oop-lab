@@ -1,14 +1,13 @@
-package labWeek4;
-import  labWeek4.Person;
+package People;
+import People.Person;
 
 public class Student extends Person {
     private int credits;
 
     public Student(String name, String address) {
-        super(name, address);
+        super(name,address);
         this.credits = 0;
     }
-
 
     public void study() {
         this.credits++;
@@ -20,6 +19,7 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + ", Credits: " + credits;
+        return super.toString() + credits;
     }
 }
+
