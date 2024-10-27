@@ -22,16 +22,22 @@ public class Main {
 
         Teacher pekka2 = new Teacher("Pekka Mikkola", "Korsontie Street 1 03100 Vantaa", 1200);
         Teacher esko2 = new Teacher("Esko Ukkonen", "Mannerheimintie 15 Street 00100 Helsinki", 5400);
-        System.out.println( pekka2 );
-        System.out.println( esko2 );
+        System.out.println(pekka2);
+        System.out.println(esko2);
 
         List<Person> people = new ArrayList<Person>();
-        people.add(new Teacher("Haris","Izacic BB, Bihac 77208"));
-        people.add(new Student("Tarik","Sarajevo Ilidza 21222"));
+        people.add(new Teacher("Haris", "Izacic BB, Bihac 77208"));
+        people.add(new Student("Tarik", "Sarajevo Ilidza 21222"));
         printDepartment(people);
 
-    }
+        Circle circle = new Circle("Red", FillType.FILLED, 5.0);
+        circle.displayInfo();
 
+
+        Rectangle rectangle = new Rectangle("Blue", FillType.NOT_FILLED, 4.0, 6.0);
+        rectangle.displayInfo();
+
+    }
 
 
     public static void printDepartment(List<Person> people) {
@@ -39,4 +45,8 @@ public class Main {
             System.out.println(person);
         }
     }
+
+
+
+
 }
