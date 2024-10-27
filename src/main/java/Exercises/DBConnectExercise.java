@@ -34,7 +34,7 @@ public class DBConnectExercise {
 
         while (resultSet.next()) {
             System.out.println(resultSet.getString("first_name") + " " + resultSet.getString("last_name"));
-        }
+        } // lista redom
     }
 
 
