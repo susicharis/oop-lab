@@ -7,6 +7,8 @@ public class DbConnect {
     private static final String USERNAME = "my_user"; // Proveri da li je ovo tačno
     private static final String PASSWORD = "my_password"; // Proveri da li je ovo tačno
 
+
+
     private Connection connection = null;
 
     public DbConnect() {
