@@ -16,7 +16,7 @@ public class SecondMain{
             // Poziva getTitlesByEmployeeId metodu za prikaz naslova zaposlenog sa ID-em 10001
             dbConnect.getTitlesByEmployeeId(10001);
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // catch metoda
         }
     }
 }
