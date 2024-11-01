@@ -3,13 +3,19 @@ package ExercisesW4;
 public class Student extends Person {
     private int credits;
 
-    public Student (String name, String address) {
+    public Student(String name, String address) {
         super(name, address);
-        this.credits = credits;
+        credits = 0;
     }
 
     void study() {
         this.credits++;
+    }
+
+    void study2() {
+        for (int i = 0; i < 25; i++) {
+            this.credits++;
+        }
     }
 
     int credits() {
@@ -20,6 +26,7 @@ public class Student extends Person {
     public String toString() {
         return super.toString() + this.credits;
     }
+
 }
 
 
