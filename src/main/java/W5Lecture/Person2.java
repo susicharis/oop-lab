@@ -28,6 +28,8 @@ public class Person2 {
 
 
 
+
+
     public static void main(String[] args) {
         Person2 osoba = new Person2("Haris", 30, 8, 2004);
         System.out.println(osoba);

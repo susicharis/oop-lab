@@ -24,6 +24,7 @@ public class FootballClub {
         return players;
     }
 
+
     void setName(String name) {
         this.name = name;
     }
@@ -50,6 +51,17 @@ public class FootballClub {
     }
 
 
+    public FBClubPerson oldestPlayer() {
+        FBClubPerson oldest = players.get(0);
+        for(FBClubPerson player : players) {
+            if (oldest.getAge() > player.getAge()) {
+                oldest = player;
+            }
+        }
+        return oldest;
+    }
+
+
 
     public static void main(String[] args) {
 
@@ -59,11 +71,16 @@ public class FootballClub {
         // pozivamo konstruktor iz FBClubPerson klase
         FBClubPerson firstPlayer = new FBClubPerson("Cristiano Ronaldo", 39);
         FBClubPerson secondPlayer = new FBClubPerson("Haris Susic", 20);
+        FBClubPerson thirdPlayer = new FBClubPerson("Leo Messi", 37);
+        FBClubPerson fourthPlayer = new FBClubPerson("John Smith", 45);
 
         // u objekte dodajemo playere, jer objekti sadrze atribute klase
 
         firstClub.addPlayer(firstPlayer);
         secondClub.addPlayer(secondPlayer);
+        firstClub.addPlayer(thirdPlayer);
+        firstClub.addPlayer(fourthPlayer);
+
 
         System.out.println("First club: " + firstClub.getName());
         // automatski se poziva toString metoda iz klase FootballClub, tako da prikazuje igrace
@@ -72,6 +89,17 @@ public class FootballClub {
 
         System.out.println("Second club: " + secondClub.getName());
         System.out.println("Their best player: " + secondClub);
+
+        FBClubPerson oldest = firstClub.oldestPlayer();
+        if (oldest != null) {
+            System.out.println("The oldest player in first club is: " + oldest.getName());
+        } else {
+            System.out.println("No oldest player found");
+        }
+
+
+
+
 
 
 
