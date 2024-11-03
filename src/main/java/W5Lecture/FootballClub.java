@@ -3,18 +3,17 @@ package W5Lecture;
 import java.util.ArrayList;
 
 public class FootballClub {
+
     private String name;
     private int yearOfFoundation;
     private ArrayList<FBClubPerson> players;
-
 
     public FootballClub(String name, int yearOfFoundation) {
         this.name = name;
         this.yearOfFoundation = yearOfFoundation;
         this.players = new ArrayList<FBClubPerson>();
-
     }
-    // Getters
+
     public String getName() {
         return name;
     }
@@ -24,49 +23,55 @@ public class FootballClub {
     public ArrayList<FBClubPerson> getPlayers() {
         return players;
     }
-    // Setters
-    public void setName(String name) {
+
+    void setName(String name) {
         this.name = name;
     }
-    public void setYearOfFoundation(int yearOfFoundation) {
+    void setYearOfFoundation(int yearOfFoundation) {
         this.yearOfFoundation = yearOfFoundation;
     }
-    public void setPlayers(ArrayList<FBClubPerson> players) {
+    void setPlayers(ArrayList<FBClubPerson> players) {
         this.players = players;
     }
 
-// metoda omogucava dodavanje igraca u listu players
-    public void addPlayer(FBClubPerson player) {
+
+    void addPlayer(FBClubPerson player) {
+        // playera kojeg ti proslijedim, proslijedi ga glavnom atributu klase
         this.players.add(player);
     }
-// vraca string koji predstavlja sve igrace kluba
-// iterira kroz listu players i dodaje string reprezentaciju svakog igraca
-    public String toString() {
-        String playersString = " ";
 
-        for(FBClubPerson player : players) {
-            playersString += player + " ";
+    public String toString() {
+        String playersString = "";
+
+        for (FBClubPerson player : players) {
+            playersString += player.toString();
         }
         return playersString;
     }
 
 
+
     public static void main(String[] args) {
-        FootballClub club1 = new FootballClub("Real Madrid", 1953);
-        FootballClub club2 = new FootballClub("Barcelona", 1981);
 
-        FBClubPerson player1 = new FBClubPerson("Cristiano Ronaldo", 39);
-        FBClubPerson player2 = new FBClubPerson("Lionel Messi", 37);
+        FootballClub firstClub = new FootballClub("FC Barcelona", 1963);
+        FootballClub secondClub = new FootballClub("Real Madrid FC", 1955);
 
-        club1.addPlayer(player1);
-        club2.addPlayer(player2);
+        // pozivamo konstruktor iz FBClubPerson klase
+        FBClubPerson firstPlayer = new FBClubPerson("Cristiano Ronaldo", 39);
+        FBClubPerson secondPlayer = new FBClubPerson("Haris Susic", 20);
 
-        System.out.println("First club: " + club1.getName());
-        System.out.println("Best player: " + player1);
+        // u objekte dodajemo playere, jer objekti sadrze atribute klase
 
-        System.out.println("Their rival: " + club2.getName());
-        System.out.println("Best player: " + player2);
+        firstClub.addPlayer(firstPlayer);
+        secondClub.addPlayer(secondPlayer);
 
+        System.out.println("First club: " + firstClub.getName());
+        // automatski se poziva toString metoda iz klase FootballClub, tako da prikazuje igrace
+        // u formatu Stringa, umjesto ArrayLista - JER OVERRIDEA
+        System.out.println("Their best player: " + firstClub);
+
+        System.out.println("Second club: " + secondClub.getName());
+        System.out.println("Their best player: " + secondClub);
 
 
 
