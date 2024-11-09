@@ -1,0 +1,48 @@
+JAVA SET
+* Set interface defines funkcionalnost od Java setova.
+* Uvijek ima 0 ili 1 ELEMENT OF A CERTAIN TYPE.
+* * * HASHSET - ONE OF THE CLASSES WHICH IMPLEMENT THE SET INTERFACE
+
+JAVA COLLECTION
+* Colletion interface definise osnovne metode i funkcionalnosti za rad sa kolekcijama podataka.
+  Kolekcije su objekti koji grupisu vise elemenata u jednu strukturu i pruzaju razne metode za manipulaciju tim elementima.
+
+  NAJCESCE VRSTE COLLECTIONA(Klase Koje implementiraju Collection): LISTE I SETOVI
+  KORISTE SE ZA CUVANJE PODATAKA, ALI SA RAZLICITIM PRAVILIMA
+
+    LIST:
+        Kolekcija koja cuva elemente u odredjenom redoslijedu i DOZVOLJAVA DUPLIKATE KLASE.
+        KLASE ARRAYLIST, LINKEDLIST IMPLEMENTIRAJU LIST INTERFACE
+    SET:
+        NE DOZVOLJAVA DUPLIKATE ALI NE GARANTUJE REDOSLIJED ELEMENATA KLASE.
+        KLASE HASHSET, TREESET IMPLEMENTIRAJU SET INTERFACE
+
+    MAP (HASHMAP):
+        HashMap - KLASA koja implementira MAP Interface
+        MAP je Interface koji je napravljen za strukture koje skladiste parove "key-value", i to radi HashMap
+        COLLECTION predstavlja skup podataka pojedinacnih elemenata!
+        HashMap ima metode koje vracaju pogled na Collections, omogucavajuci pristup "keyovima", "values" ili parovima
+        "key-values" u obliku Collectiona!
+
+        COLLECTION POGLEDI U HASHMAPU:
+
+
+
+
+    Map<String, String> translations = new HashMap<>();
+    * Definise translations kao "mapu" koja prima key-value parove
+    * <String,String> - prvi String je "key" , drugi String je "value"
+    PRIMJER : Ako je key : Hello, odgovarajuca vrijednost je "Zdravo"
+
+
+    Set<String> keys = translations.keySet();
+    * keySet() - vraca sve keyove iz mape translations.
+    * Set<String> keys - kreira "keys" koji je tipa Set<String>
+      Nakon ovog "keys" sadrzi sve keyove iz mape translations.
+
+
+      Set<String> allValues = translations.values();
+      * Ovo ne mozemo uraditi zato sto values() je metoda u Map - vraca Collection<String> a ne Set<String>
+
+
+

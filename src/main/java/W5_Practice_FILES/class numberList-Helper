@@ -1,0 +1,6 @@
+public void add(Readable readable2) {
+        this.readables.add(readable2);
+    }
+
+* omogucava da add metoda prima objekat tipa Readable i dodaje taj objekat u listu readables.
+  NA TAJ NACIN MOZEMO DODAVATI RAZLICITE OBJEKTE KOJI IMPLEMENTIRAJU READABLE INTERFACE U OVU LISTU

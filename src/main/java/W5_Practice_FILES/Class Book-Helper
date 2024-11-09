@@ -1,0 +1,47 @@
+Kad pricamo o "equals" metodi - mozemo ga override.
+On obicno provjerava reference Objekata, tj. na koju adresu pokazuju
+KAD GA OVERRIDEAMO, mozemo provjeriti da li su atributi klase isti na osnovu PRAVIH VRIJEDNOSTI
+- U ovom slucaju 'title' i 'author'
+
+METODA EQUALS UVIJEK PRIMA PARAMETAR TIPA OBJECT, JER SE NASLJEDJUJE OD OBJECT KLASE
+
+EqualsMethodOverride - vjezba za ovo.
+
+@Override
+    public boolean equals(Object anyObject) {
+        if (anyObject == null)
+            return false;
+
+        if (anyObject instanceof EqualsMethodOverride) {
+            EqualsMethodOverride insideBook = (EqualsMethodOverride) anyObject;
+
+            if (
+                    this.author.equals(insideBook.getAuthor()) && this.name.equals(insideBook.getName())
+            ) {
+                return true;
+            }
+        } return false;
+    }
+
+
+    * Modifikujemo "equals" metodu
+    * Ona za parametar prima objekat koji cemo porediti
+    * U njoj smo napravili to da umjesto da poredi reference objekata, ono ce porediti stvarne vrijednosti
+    * Ovako to funkcionise:
+        * prvo provjeravamo da li je nas proslijedjeni objekt null, jer ako jeste vrati false, zato sto nema smisla sa njim raditi
+        * onda provjeravamo da li je taj nas objekt instanca nase klase kako bi mogli porediti ono sto je trazeno
+        * ako jeste, novom objektu insideBook dodijeli proslijedjeni objekt koji je type-casted u nasu Klasu
+        * pravimo if uslov, gdje uzimamo "this.author" sto se odnosi na nas atribut iz Parent class, i poredimo ga sa getAuthorom od
+          nase proslijedjenog objekta
+
+          Ova provera (anyObject instanceof EqualsMethodOverride) osigurava da upoređujemo objekat koji je stvarno instance naše klase.
+          Ovo je važno, jer bez ove provere ne bismo mogli da pristupimo specifičnim atributima klase kao što su author i name
+          (u suprotnom bi se desila greška pri pokušaju kastovanja).
+
+          Nakon što je potvrđeno da anyObject zaista jeste instanca klase EqualsMethodOverride, kastujemo ga u taj tip ((EqualsMethodOverride) anyObject).
+          Ovo je potrebno kako bismo mogli da pristupimo metodama i atributima klase, poput getAuthor() i getName().
+          Kastovani objekat čuvamo u promenljivoj insideBook.
+
+          Nakon kastovanja, upoređujemo atribute trenutnog objekta (this.author i this.name) sa atributima prosleđenog objekta
+          (insideBook.getAuthor() i insideBook.getName()). Ako su oba atributa ista, equals vraća true, što znači da su objekti jednaki prema našem kriterijumu.
+

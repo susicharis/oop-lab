@@ -1,0 +1,47 @@
+Interface
+* Definise sta klasa treba da radi (koje metode treba da implementira), ali ne govori
+  kako te metode trebaju da budu implementirane.
+  Dakle, sadrzi samo potpise metoda, bez stvarne implementacije.
+
+* Kada Class Implementira Interface, ona mora da obezbijedi implementaciju za sve metode
+  iz tog interfacea.
+
+  ZNACI! Za sve metode koje imamo u interfaceu, ako ga nasa klasa implementira, mi moramo napraviti
+  implementaciju tih metoda - moramo im definisati sta ce raditi pri pozivu.
+
+* INTERFACE nam omogucava da definisemo zajednicko ponasanje koje razlicite klase mogu dijeliti,
+  bez potrebe za direktnim naslijedjivanjem (kao kod apstraktnih klasa??)
+
+  DAJEMO FLEKSIBILNOST - JER RAZLICITE KLASE MOGU IMPLEMENTIRATI ISTI INTERFACE I IMATI RAZLICITE IMPLEMENTACIJE TIH METODA
+
+* The access modifier is not specified, because it is always public.
+
+*
+An interface is a behavioural agreement.
+In order to implement the behaviour, the class must implement ALL of the methods defined by the interface.
+The programmer of a class which implements an interface has to define what the behaviour will be like.
+Implementing an interface means to agree that the class will offer all the actions defined by the interface, i.e. the behaviour defined by the interface.
+A class which implements an interface but does not implement some of the interface methods can not exist.
+*
+
+===============================================================================================================|
+SMS2.java
+==========|
+Kada Class implements Interface - mozemo dodijeliti OBJEKT TE KLASE VARIJABLI TOG INTERFACEA
+Ovo radi automatski, jer klasa garantuje da ce implementirati sve metode iz interfacea.
+
+SMS2 message = new SMS2("teacher", "The SMS is Readable!");
+Readable readable = message;  // Ovo radi jer SMS implementira MyReadable
+
+* message je objekat klase SMS2, a SMS2 implementira interface Readable
+* OVO MOZE DAITI JER OBJEKAT "message" zadovoljava ugovor INTERFACEA
+
+Readable readable2 = new SMS2("teacher", "The SMS is Readable!");
+SMS2 message2 = readable2;  // Ovo neće raditi direktno
+
+* Compiler ne zna da li je objekat "readable2" zaista instanca klase SMS2, pa ce baciti gresku jer ne mozemo DIREKTNO
+* MORAMO KORISTITI TYPE CASTING
+
+Readable readable2 = new SMS2("teacher", "The SMS is Readable!");
+SMS message2 = (SMS) readable;  // Ovo radi uz type casting
+

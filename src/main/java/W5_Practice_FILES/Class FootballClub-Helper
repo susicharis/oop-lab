@@ -1,0 +1,53 @@
+Atribut "players" je lista objekata tipa Person, ALI JOS UVIJEK NEMA NACIN DA DODAMO IGRACE!
+MI MORAMO NAPRAVITI METODU KOJA CE PRIMATI Objekte Person kao PARAMETAR KAKO BI MOGLI DODAVATI IGRACE !
+
+==============================================================================================================|
+
+SecondFootballCLub
+
+public String toString() {
+        String newPlayersString = " ";
+
+        for(Person nasiIgraci : newPlayers) {
+            newPlayersString += nasiIgraci.toString() + "\n";
+        } return this.name + " " + this.yearOfFoundation + ", Best Player:" + newPlayersString;
+    }
+
+    * ova metoda konvertuje LISTU OBJEKATA PERSON (u newPlayers listi) U JEDAN FORMATIRAN STRING
+    * BEZ AUTOMATSKOG FORMATA ARRAYLISTA
+
+
+    String newPlayersString = " ";
+    * Prazan na pocetku i koristi se za formatiranje teksta koji ce sadrzavati informacije o svim igracima
+
+    for(Person nasiIgraci : newPlayers) {
+              * Prolazi kroz svaki objekat Person u newPlayers listi
+        }
+
+
+   newPlayersString += nasiIgraci.toString() + "\n";
+   * poziva metodu toString() za svaki objekat klase Person i vraca informacije o tom igracu kao String
+   * PERSON MORA IMATI TOSTRING TAMO NAPISANO DA BI OVO RADILO !!!
+
+==============================================================================================================|
+
+OBJASNJENJE ZADATKA
+
+znaci u mainu napravili smo objekat betterFirstClub i dateForPerson,
+te Person kojem smo dodijelili objekat dateForPerson - to je object within an object,
+i onda smo napravili arraylist of objects within object :
+
+napravili smo metodu koja ce primati nase objekte, i saljemo objekat bestPlayer
+u metodu addplayerstolist, kako bi proslijedilo taj objekat u nasu arrayListu newPlayers,
+takodje smo u override napravili da iterira kroz sve nase igrace i pravi ih u string formatu ,
+za players.toString() ovo da bi funkcionisalo moramo imati u klasi Person toString napravljeno
+
+Ukratko, kreirali ste:
+
+Objekte unutar objekta (Person unutar SecondFootballClub)
+Listu objekata unutar objekta (ArrayList newPlayers unutar SecondFootballClub)
+Formatiran ispis svih igrača koristeći toString()
+
+==============================================================================================================|
+FootballClub.java - Method returns an Object
+

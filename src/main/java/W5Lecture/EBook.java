@@ -83,6 +83,19 @@ public class EBook implements YourReadable {
         System.out.println(secondReadable.read());
         System.out.println(obj); // adresa
 
+        YourReadable example = new SecondSMS("Hello Guys ITS ME !");
+        // ovo radi zato sto SMS implementira YourReadable inteface
+
+        // SecondSMS example2 = example;
+        // ovo ne radi jer readable ima tip MyReadable.
+        // Iako "readable" sadrzi instancu SMS klase, ona trenutno nije tako prepoznata, vec samo kao "YourReadable"
+
+        System.out.println();
+        System.out.println("Printer printer: ");
+        System.out.println();
+        Printer printer = new Printer();
+        printer.print(message);
+        printer.print(secondReadable);
 
 
 
@@ -111,6 +124,12 @@ class SecondSMS implements YourReadable {
     }
 
 } // end of SecondSMS class
+
+class Printer {
+    public void print(YourReadable readable) {
+        System.out.println(readable.read());
+    }
+}
 
 interface YourReadable {
     public String read();

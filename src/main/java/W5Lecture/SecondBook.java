@@ -61,6 +61,37 @@ interface MyReadable {
     public String read();
 }
 
+class NumList implements MyReadable {
+    private ArrayList<MyReadable> readables;
+
+    public NumList() {
+        this.readables = new ArrayList<MyReadable>();
+    }
+
+    public void add(MyReadable readable) {
+        this.readables.add(readable);
+    }
+
+    // Ovo kad ispisuje array - umjesto da ima zagrade fino ce ispisati !!
+    public String read() {
+        String read = "";
+        for (MyReadable readable : this.readables) {
+            read += readable.read() + "\n";
+        }
+
+        this.readables.clear();
+        return read;
+    }
+
+    public int howManyReadables() {
+        return this.readables.size();
+    }
+
+
+}
+
+
+
 
 class MyMainClass {
     public static void main(String[] args) {
@@ -69,5 +100,11 @@ class MyMainClass {
 
         System.out.println(sms.read());
         System.out.println(book.read());
+
+        NumList harisList = new NumList();
+        harisList.add(new SMS("Hey you are good guy!"));
+
+        System.out.println("Haris has " + harisList.howManyReadables() + " messages to read!");
     }
 }
+

@@ -1,0 +1,34 @@
+DATE AS AN OBJECT  - Slide 19
+Let us now create a method, which can compare whether the date is earlier than a date that is given as a parameter
+======================================================================================================================|
+public boolean earlierThan(myDate comparePlease) {
+        if (this.year < comparePlease.getYear()) {
+            return true;
+        }
+
+        if (this.year == comparePlease.getYear() && this.month < comparePlease.getMonth()) {
+            return true;
+        }
+
+        if (this.year == comparePlease.getYear() && this.month == comparePlease.getMonth() && this.day < comparePlease.getDay()) {
+            return true;
+        } return false;
+    }
+
+    public static void main(String[] args) {
+        myDate firstDate = new myDate(30,8,2004);
+        myDate secondDate = new myDate(9,3,2005);
+
+        System.out.println(firstDate.earlierThan(secondDate));
+    }
+
+======================================================================================================================|
+READY MADE DATE OBJECTS - Slide 25
+
+// Ready made Date Objects
+        System.out.println("Ready made Date Objects: \n ");
+        int newDay = Calendar.getInstance().get(Calendar.DATE);
+        int newMonth = Calendar.getInstance().get(Calendar.MONTH) + 1; // January is 0 so we add 1
+        int newYear = Calendar.getInstance().get(Calendar.YEAR);
+        System.out.println("Today is " + newDay + "." + newMonth + "." + newYear);
+    }

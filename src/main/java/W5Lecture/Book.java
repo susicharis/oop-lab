@@ -45,6 +45,11 @@ public class Book {
 
     }
 
+    @Override
+    public String toString() {
+        return this.author + " " + this.title;
+    }
+
 
     public static void main(String[] args) {
         Book book1 = new Book("Haris Susic", "King of the Jungle");

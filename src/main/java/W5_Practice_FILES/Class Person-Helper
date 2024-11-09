@@ -1,0 +1,164 @@
+Unutar Konstruktora - pozivanje drugog konstruktora
+* Mozemo ga koristiti kad zelimo skratiti kod, recimo u ovom slucaju hocemo
+* da je podrazumijevano da svaka osoba ima 18 godina, ako ne zelimo mozemo samo dodati
+* i drugi konstruktor ce iskoristiti te godine
+
+* ALI npr kad god inicjalizujemo sa imenom samo, npr. Becir, odmah ce mu automatski
+* postaviti 18 god.
+=======================================================================================================================|
+public class Person {
+    private String name;
+    private int age;
+    private int weight;
+    private int height;
+
+    public Person(String name) {
+        this(name, 18);
+
+    }
+
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+
+
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.weight = 70;
+        this.height = 180;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " " + this.age;
+    }
+
+    public static void main(String[] args) {
+        Person person1 = new Person("Haris",20);
+        Person person2 = new Person("Becir");
+
+        System.out.println(person1.getAge());
+        System.out.println(person2.getAge());
+
+
+        System.out.println(person1);
+    }
+
+}
+=======================================================================================================================|
+METHOD OVERLOADING - Slide 8
+- Parametri moraju biti drugaciji, moze isti naziv, svi isti fazoni kao kod constructor overloading
+- ovo sto sad dole ispisem smo dodali na gore kod
+
+public void becomeOlder() {
+        this.age += 1;
+    }
+
+    public void becomeOlder(int years) {
+        this.age += years;
+    }
+
+    person1.becomeOlder(10);
+    System.out.println("He is now 10 years older: " + person1);
+
+    person2.becomeOlder();
+    System.out.println("Becir just grew for 1 year because of other method: " + person2);
+
+=======================================================================================================================|
+OBJECT REFERENCE -Slide 9
+- Kada iskoristimo "new Person" :
+    * kreira se NOVI OBJEKAT KLASE PERSON U MEMORIJI i postavlja atribute "name" i "age".
+- Person "pekka" JE VARIJABLA, PREDSTAVLJA INSTANCU KLASE PERSON, TAKODJE JE I VARIJABLA
+  KOJA NE SADRZI VRIJEDNOST OBJEKTA, VEC ADRESU GDJE SE TA VRIJEDNOST NALAZI (DAKLE PEKKA JE REFERENCA)
+
+Person pekka = new Person("Pekka", 24);
+System.out.println(pekka);
+
+- Kad pisemo "Person randomPerson = pekka;"
+    * MI NE KREIRAMO NOVI OBJEKAT
+    * DODJELUJEMO ISTU ADRESU VARIJABLI "randomPerson"
+    * TO ZNACI DA i PEKKA i randomPerson POKAZUJU NA ISTU VRIJEDNOST
+    * TAKO DA KAD BILO KOJI OBJEKAT POVECAMO GODINE POVECATI CE NA ISTOJ VRIJEDNOSTI
+
+        Person pekka = new Person("Pekka", 24);
+        System.out.println(pekka);
+
+        Person randomPerson = pekka;
+        randomPerson.becomeOlder();
+        System.out.println(pekka);
+
+ DEATTACHING OBJECT REFERENCE - Slide 12
+
+ // Deattaching Object Reference
+         pekka = new Person("New Pekka", 26);
+         System.out.println(pekka);
+         System.out.println(randomPerson);
+
+         * Bukvalno smo samo napravili novi objekt za "pekka"
+
+
+WHAT HAPPENS IF WE SET AN OBJECT TO A NULL?
+
+    Person pekka = null;
+   System.out.println(pekka.becomeOlder());
+
+   * Dobijemo ERROR : NullPointerException - SVAKI PUT KAD JE OBJEKAT null;
+
+=======================================================================================================================|
+ANOTHER OBJECT OF THE SAME TYPE AS A PARAMETER TO A METHOD
+METODA KOJA PRIMA OBJEKT ISTE KLASE KAO PARAMETAR
+
+// Metoda koja prima objekat iste klase, kao parametar
+    public boolean isOlderThan(Person proslijedjenaOsoba) {
+        if (this.age > proslijedjenaOsoba.getAge()) {
+            return true;
+        } return false;
+    }
+
+    System.out.println(person1.isOlderThan(person2));
+
+    * Samo zapamti sintaksu dobro !!! : "objekat.metoda(sta proslijedjujemo)"
+
+    * napravili smo metodu isOlderThan koja ce primati parametar koji jos proslijedimo
+    * taj proslijedjeni parametar ce porediti godine objekta kojeg koristimo, sa godinama osobe koju proslijedimo
+
+
+=======================================================================================================================|
+OBJECT WITHIN OBJECT
+* Jedan objekat moze biti atribut drugog objekta
+* U Person.java smo koristili myDate.java !!!!!!!!!!!!!!!!
+
+    private myDate myDateOfBirth;
+* posebna klasa (myDate) koja se ovdje koristi da predstavlja datum rodjenja
+* TA myDate KLASA MORA BITI PRETHODNO DEFINISANA (Moze unutar Person : class myDate ili napravimo u drugom fileu klasu tu)
+* OVO ZNACI DA ZA SVAKOG PERSON OBJEKTA, MOZEMO IMATI SPECIFICAN DATUM RODJENJA KOJA JE INSTANCA KLASE MYDATE
+
+* SVE SAM STAVIO U KOMENTAR DA OVO MOZE RADITI
+* MORAMO I U MYDATE DA OVERRIDEAMO KAKO BI TAMO ISPISALO STA NAM TREBA
+
+
+    myDate myDateOfBirth = new myDate(30,8,2004);
+            Person person3 = new Person("Haris",18,myDateOfBirth);
+
+    * MI PRVO MORAMO KREIRATI NOVI OBJEKAT I ONDA TAJ OBJEKAT MOZEMO KORSITITI U KREACIJI NOVOG OBJEKTA
+
+
+    // mozemo i ovako uraditi:
+            this.myDateOfBirth = new myDate(10,8,2004);
+            OVO SMO ZAPISALI U KONSTRUKTORU
+
+Test.java - ODLICNO OBJASNJENJE !!!!
+
+
+
+=======================================================================================================================|
+
+
+
+
+

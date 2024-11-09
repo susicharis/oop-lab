@@ -1,0 +1,16 @@
+ArrayList<Person>  firstPerson = new ArrayList<Person>();
+
+* Ovaj ArrayList MOZE SAMO DA SKLADISTI OBJEKTE TIPA Person
+* NE MOZE TIPA STRING, TIPA INT, SAMO PERSON !!!
+
+    firstPerson.add(new Person("Haris",24));
+- OVAKO DODAJEMO ELEMENTE U TAJ NAS ARRAY
+
+// Loop through Array
+
+        for (Person sveOsobe : firstPerson) {
+            System.out.println(sveOsobe);
+        }
+
+=====================================================================================|
+
