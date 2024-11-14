@@ -1,4 +1,4 @@
-package labWeek3;
+package Week_3_Lab;
 
 import java.sql.*;
 
