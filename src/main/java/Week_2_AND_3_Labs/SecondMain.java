@@ -1,4 +1,4 @@
-package Week_3_Lab;
+package Week_2_AND_3_Labs;
 
 
 // Database Connectivity
