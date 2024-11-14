@@ -1,4 +1,4 @@
-package ExercisesW4;
+package Week_4_Lab;
 
 public class Student extends Person {
     private int credits;

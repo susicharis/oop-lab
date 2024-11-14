@@ -1,6 +1,4 @@
-package Exercises;
-
-import People.Person;
+package Exercises_ALL_Weeks;
 
 public class LecutrePerson {
 

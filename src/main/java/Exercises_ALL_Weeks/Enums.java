@@ -1,4 +1,4 @@
-package Exercises;
+package Exercises_ALL_Weeks;
 
 enum Days {
     MON, TUE, WED, THU, FRI, SAT, SUN;
