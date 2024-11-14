@@ -1,4 +1,4 @@
-package labWeek1;
+package Week_1_Lab;
 // Week One Lab Tasks
 public class weekOne {
     public static void main(String[] args) {

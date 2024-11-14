@@ -1,8 +1,8 @@
 package labWeek2;
-
+// Week Two Lab Tasks
 public class weekTwo {
     public static void main(String[] args) {
-        // Lab WEEK 2 --------------------------------------------->
+
 
         // Task 1
 /*
