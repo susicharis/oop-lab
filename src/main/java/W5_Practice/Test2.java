@@ -23,6 +23,10 @@ public class Test2 implements Readable {
         return "Why would you call me..";
     }
 
+    public String readThis() {
+        return "Pls dont call me..";
+    }
+
 
 
 

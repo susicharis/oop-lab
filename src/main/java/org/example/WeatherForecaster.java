@@ -11,7 +11,7 @@ public class WeatherForecaster {
 
     public String forecastWeather() {
         // this - referencira na trenutni objekt klase WeatherForecaster
-        // nextDouble() - metoda klase Random koja vraca random broj tipa double
+        // nextDouble() - metoda klase  koja vraca random broj tipa double
         double probability = this.random.nextDouble();
         if (probability <= 0.1)
             return "Sleet";

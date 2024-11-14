@@ -1,0 +1,29 @@
+Abstraction is the process of hiding certain details and showing only essential information to the user.
+Abstraction can be achieved with either abstract classes or interfaces.
+
+So any class implementing them has to have the declared methods !!!
+
+Difference between two of these are:
+You can implement as many interfaces as you want in Java, but you can only extend 1 class
+Any field declared in the interface will be both, static and final.
+This means that every object will have the same value for an attribute in an interface.
+In that sense, having the fields in an interface, in most cases makes no sense.
+That is why, the abstract classes are better for these kind of problems
+
+
+YOU WILL USE THE ABSTRACT CLASS IF YOU HAVE A LOT OF CLOSELY RELATED CLASSES THAT YOU WANT TO HAVE THE SAME FUNCTIONALITY AND THE SAME TYPES OF FIELDS
+YOU MIGHT USE THE INTERFACE IF YOU HAVE A LOT OF UNRELATED CLASSES THAT YOU ALL WANT TO BE ABLE TO DO A CERTAIN THING.
+SO OTHER TYPES OF CLASSES THAT HAVE TO HAVE CERTAIN FUNCTIONALITY
+AS THEY ALL WILL HAVE THAT ABILITY BUT THEY ARE TOTALLY NOT RELATED CLASSES.
+
+
+W7
+
+Wildcard - runtime polimorfizam razlika (NAUCITI)
+
+@FunctionalInterface - it will not allow us to create multiple methods
+                     - stavljamo iznad interfacea
+                     (LAMBDA) ISTRAZITI OVO JOS
+
+                     IMPLICIT RETURN ? (Only if our operation is single-liner)
+                     Ako imamo single parameter - ne trebaju nam zagrade

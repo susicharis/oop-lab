@@ -17,16 +17,20 @@ public class InterfacePractice implements Readable {
     }
 
     // Implementacija Interfacea
-    @Override
     public String read() {
         return "Person " + this.name + " is reading " + this.author;
+    }
+
+    public String readThis() {
+        return "But this person " + this.name + " doesn't like to read " + this.author;
     }
 
     public static void main(String[] args) {
         InterfacePractice bookOne = new InterfacePractice("Haris","Tvrdjava");
         InterfacePractice bookTwo = new InterfacePractice("Becir","Pinokio");
-
+        Readable bookThree = new InterfacePractice("Tokyo","Tokyo City");
         System.out.println(bookOne.read());
+        System.out.println("Warabout this: " + bookThree.readThis());
 
         NotReading bookFirst = new NotReading("Becko","Mravojed");
         System.out.println(bookFirst.read());
@@ -65,6 +69,10 @@ class SMS implements Readable {
         return "This sender: " + this.sender + ", sent this to me: " + this.content;
     }
 
+    public String readThis() {
+        return "This sender again " + this.sender + " sent something to me " + this.content;
+    }
+
 }
 
 class NotReading implements Readable {
@@ -86,7 +94,12 @@ class NotReading implements Readable {
     public String read() {
         return "Person " + this.secondName + " is not reading " + this.secondAuthor;
     }
+
+    public String readThis() {
+        return "But this person " + this.secondName + " loves to eat cake but not read " + this.secondAuthor;
+    }
 }
+
 
 class EBook implements Readable {
     private String bookName;
@@ -105,12 +118,17 @@ class EBook implements Readable {
     public String read() {
         return "I am reading " + this.bookName + ", and I'm on page " + this.pageNumber;
     }
+
+    public String readThis() {
+        return "But he doesnt like to read this book: " + this.bookName + ", and he left on page " + this.pageNumber;
+    }
 }
 
 
 
 interface Readable {
     String read();
+    String readThis();
 }
 
 

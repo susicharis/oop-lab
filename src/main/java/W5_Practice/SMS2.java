@@ -15,6 +15,10 @@ public class SMS2 implements Readable{
         return this.sender + " says : " + this.content;
     }
 
+    public String readThis() {
+        return this.sender + " says : " + this.content;
+    }
+
     public String toString() {
         return this.sender + " " + this.content;
     }

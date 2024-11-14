@@ -1,0 +1,58 @@
+Class String derives from the Object class, so String objects are also Object-Type
+Class Object DOES NOT derive from the String class, and therefore Object variables are not
+automatically String Type.
+
+
+class Animal {
+    void eat() {
+        System.out.println("This animal eats");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks");
+    }
+}
+
+* Ovim pokazujemo da svaka klasa moze naslijediti SAMO JEDNU KLASU, MAX
+
+* ALI MOZE IMPLEMENTIRATI VISE KLASA INDIREKTNO (INTERFACE)
+
+interface Animal {
+    void eat();
+}
+interface Pet {
+    void play();
+}
+
+class Dog implements Animal,Pet {
+    public void eat() {
+        System.out.println("He eats!");
+    }
+    public void play() {
+        System.out.println("He plays!");
+    }
+}
+
+
+===================================================================================|
+
+Serializable serializableString = new String("String Seriazible");
+* Interface koji omogucava serijalizaciju objekata tj. proces pretvaranja objekta u niz bajtova
+  kako bi mogao biti upisan u file, poslat preko mreze/sacuvan u bazi podataka
+
+CharSequence charSequenceString = "String CharSequence";
+* Interface koji predstavlja sekvencu karaktera.
+* Klase koje implementiraju ovaj interface omogucavaju manipulaciju sa stringovima/nizovima karaktera.
+
+    String str = "Hello";
+    CharSequence seq = str;  // String implementira CharSequence
+      * charSequence koja je instanca String klase
+      * Ovo znaci da nas string moze koristiti sve metode koje su definisane u CharSequence interfaceu (length(),charAt())...
+
+
+Comparable<String> comparableString = "String Comparable";
+* Interface koji omogucava uporedjenje objekata tipa String(ili bilo kojeg drugog), sa drugim objektima istog tipa
+* klase koje ovo implementiraju, MORAJU IMPLEMENTIRATI compareTo(), koja omogucava porodjenja 2 objekta te klase
+

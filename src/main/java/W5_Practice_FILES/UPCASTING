@@ -1,0 +1,127 @@
+UPCASTING
+
+*
+When we take an object and cast it to it's SUPERCLASS (Parent Class) Type
+
+public class Animal {
+    String name;
+
+    public void makeNoise() {
+        System.out.println("I am just an Animal");
+    }
+}
+
+class Dog extends Animal {
+
+    public void makeNoise() {
+        System.out.println("Woof woof");
+    }
+
+    public void growl() {
+        System.out.println("Grrrrr..");
+    }
+}
+
+class Cat extends Animal {
+
+    public void makeNoise() {
+        System.out.println("Meow Meow Gigga!");
+    }
+}
+
+class Casting {
+    // Why do we need upcasting? - Here we show it
+    public static void doAnimalStuff(Animal animal) {
+        animal.makeNoise();
+    }
+
+    public static void main(String[] args) {
+        // Upcasting
+        Animal myAnimal = new Dog();
+        Animal my2Animal = new Cat();
+
+        doAnimalStuff(myAnimal);
+        // vraca Woof Woof - zato sto prije nego sto smo ga castovali u Animal, bio je Tipa DOG
+        doAnimalStuff(my2Animal);
+        // vraca Meow Meow - zasto sto prije nego sto smo ga castovali u Animal, bio je Tipa CAT
+
+
+    }
+}
+
+*
+
+
+DOWNCASTING
+
+*
+When we take an object and cast it to one of it's SUBTYPES (Child Class)
+
+class Casting {
+
+    public static void doAnimalStuff(Animal animal) {
+        animal.makeNoise();
+
+        // Downcasting Animal to Dog
+        Dog myDog = (Dog) animal;
+        myDog.growl();
+    }
+
+    public static void main(String[] args) {
+
+        Animal myDog = new Dog();
+        myDog.makeNoise();
+        // ne mozemo pozvati ovdje, ali mozemo pozvati u "doAnimalStuff" nakon DOWNCASTA
+
+        Dog dog = (Dog) myDog;
+        dog.growl();
+
+
+    }
+}
+
+
+/////////////
+
+
+*
+
+
+Animal.java
+*
+UPCASTING would be taking a Dog object and CASTING IT as an Animal type
+DOWNCASTING would be taking an Animal object and CASTING IT as a Dog type
+
+Animal myAnimal = new Dog();
+ * here we are creating a new Dog object - but we are casting it to an Animal
+ * since Dog is a SUBCLASS of Animal - every Dog is an Animal in fact.
+ * myAnimal has type of Animal - that is called a REFERENCE TYPE
+ * Since it's treated as Animal variable, we can't use Dog methods(), that only apply to dogs
+
+ myAnimal.growl();
+ * Ovo ne radi zato sto smo UPCAST iz Dog u Animal, i u Animal ne postoji metoda growl()
+
+
+ // Why do we need upcasting? - Here we show it
+     public static void doAnimalStuff(Animal animal) {
+         animal.makeNoise();
+     }
+
+     * this method takes an Animal(Parent Class)
+       but when we call this method, we can send an Animal Object,
+       ALI MOZEMO POSLATI BILO KOJI OBJEKT KOJI JE CHILD CLASS ANIMALA
+       ZATO STO ANY OBJECT THATS A SUBTYPE OF ANIMAL - ZAPRAVO JE I ON ANIMAL
+
+
+       BEZ UPCASTINGA - morali bi za svaku zivotinju napraviti posebnu metodu i sta ce raditi
+
+
+
+SAD DOWNCASTING ZADATKA
+- IT CAN THROW EXCEPTIONS IF WE DONT PUT THE RIGHT OBJECT
+
+Dog myDog = (Dog) animal;
+* I know we have in parameter Animal variable, but trust me,
+  I know this Animal is a dog, so please, CAST IT AS A DOG
+
+

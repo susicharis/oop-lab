@@ -45,6 +45,10 @@ public class Person implements Readable{
         return this.name + " " + this.age + " " + this.myDateOfBirth;
     }
 
+    public String readThis() {
+        return this.name + " " + this.age + " " + this.myDateOfBirth;
+    }
+
 
     // Metoda koja prima objekat iste klase, kao parametar
     public boolean isOlderThan(Person proslijedjenaOsoba) {

@@ -31,6 +31,14 @@ public class SecondEBook implements Readable {
         return pageNum;
     }
 
+    public String readThis() {
+        String pageNumber = this.pages.get(this.pageNumber);
+        nextPage();
+        nextPage();
+        System.out.println("oof I skipped 2 pages! ");
+        return pageNumber;
+    }
+
 
     public String toString() {
         String formatting = "";

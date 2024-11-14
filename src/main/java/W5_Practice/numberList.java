@@ -24,6 +24,10 @@ public class numberList implements Readable {
         return "Reading";
     }
 
+    public String readThis() {
+        return "Reading";
+    }
+
 
 
     public int howManyReadables() {
