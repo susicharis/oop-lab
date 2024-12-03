@@ -1,4 +1,4 @@
-package People;
+package Week_4_Lab.People;
 
 import java.util.ArrayList;
 import java.util.List;

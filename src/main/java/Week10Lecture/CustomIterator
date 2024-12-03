@@ -1,0 +1,7 @@
+while (currentIndex < elements.length && elements[currentIndex] % 2 == 0)
+- currentIndex < elements.length * OSIGURAVA DA NE IZADJEMO IZVAN GRANICA NIZA
+- elements[currentIndex] * pristupamo elementu u nizu na poziciji oznacenoj sa currentIndex
+
+return currentIndex < elements.length;
+- hasNext() provjerava da li jos ima elemenata u nizu za proci
+

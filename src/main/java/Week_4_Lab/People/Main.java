@@ -1,5 +1,4 @@
-package People;
-import  People.Person;
+package Week_4_Lab.People;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class Main {
         System.out.println(esko);
 
 
-        Student olli = new People.Student("Olli", "Ida Albergintie Street 1");
+        Student olli = new Student("Olli", "Ida Albergintie Street 1");
         System.out.println(olli);
         System.out.println("credits: " + olli.credits());
         olli.study();

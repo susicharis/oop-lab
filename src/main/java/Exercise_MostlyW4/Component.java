@@ -1,4 +1,4 @@
-package Exercises_ALL_Weeks;
+package Exercise_MostlyW4;
 
 public class Component {
     private String id;

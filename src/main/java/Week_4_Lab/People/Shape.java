@@ -1,4 +1,4 @@
-package People;
+package Week_4_Lab.People;
 
 
 enum FillType {

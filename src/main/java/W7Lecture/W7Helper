@@ -1,0 +1,95 @@
+interface Printable {
+    public void print();
+}
+
+class Cat implements Printable {
+    public String name;
+    public int age;
+
+    public Cat(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("I'm a cat!");
+    }
+
+
+}
+
+class Main {
+    public static void main(String[] args)  {
+        Cat firstCat = new Cat("Haris",20);
+        firstCat.print(); // if we remove the method - Compile Time Exception
+    }
+}
+
+=================================>
+Let us now create a function that will accept the Printable interface as a parameter and only call the method of the object passed
+
+interface Printable {
+    public void print();
+}
+
+class Cat implements Printable {
+    public String name;
+    public int age;
+
+    public Cat() {};
+
+    public Cat(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("I'm a cat!");
+    }
+
+
+}
+
+class Main {
+
+    public static void printThing(Printable thing) {
+        thing.print();
+    }
+
+    public static void main(String[] args)  {
+        Cat cat = new Cat();
+
+        printThing(cat);
+    }
+}
+
+Ovo mozemo dosta lakse uraditi sa lambda : lambdas allow us to just pass in the specific implementation of the print
+method as the Printable parameter without all of the extra stuff
+
+
+interface Printable {
+    public void print();
+}
+
+
+
+class Main {
+
+    public static void printThing(Printable thing) {
+        thing.print();
+    }
+
+    public static void main(String[] args)  {
+       /*
+       Cat cat = new Cat();
+        printThing(cat);
+         */
+
+        Printable cat = () -> System.out.println("I'm a cat!");
+        printThing(cat);
+
+
+    }
+}
