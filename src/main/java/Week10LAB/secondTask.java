@@ -1,6 +1,8 @@
 package Week10LAB;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +56,7 @@ class GradeAnalyzer extends Student{
 }
 
 class Start {
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {
         List<Integer> grades = new ArrayList<Integer>();
         grades.add(10);
         grades.add(9);
@@ -77,6 +79,48 @@ class Start {
             f.setAccessible(true);
             System.out.println("The field we used for GradeAnalyzer class : " + f.getName() + ", and their value: " + f.get(stillPrviStudent));
         }
+
+        System.out.println();
+        System.out.println();
+
+
+        Method[] firstMethod = prviStudent.getClass().getDeclaredMethods();
+        for (Method first : firstMethod) {
+            first.setAccessible(true); // Set method accessible
+            if (first.getName().startsWith("print")) {
+                if (first.getReturnType() == void.class) {
+                    // If method has void return type, just invoke it
+                    first.invoke(prviStudent);
+                    System.out.println("Invoked method: " + first.getName() + " (It's void type)");
+                }
+            } else if (first.getName().startsWith("calculate")) {
+                if (first.getReturnType() != void.class) {
+                    // If method has non-void return type, invoke and print result
+                    Object result = first.invoke(prviStudent);
+                    System.out.println("Invoked method: " + first.getName() + " (It's NOT void type)");
+                    System.out.println("Result of " + first.getName() + ": " + result);
+                }
+            }
+        }
+
+        Method[] secondMethod = stillPrviStudent.getClass().getDeclaredMethods();
+        for (Method second : secondMethod) {
+            second.setAccessible(true);
+            if (second.getName().startsWith("print")) {
+                if (second.getReturnType() == void.class) {
+
+                    second.invoke(stillPrviStudent);
+                    System.out.println("Invoked method: " + second.getName() + " (It's void type)");
+                }
+            } else if (second.getName().startsWith("calculate")) {
+                if (second.getReturnType() != void.class) {
+
+                    Object result = second.invoke(stillPrviStudent);
+                    System.out.println("Result of " + second.getName() + ": " + result);
+                }
+            }
+        }
+
 
 
     }
