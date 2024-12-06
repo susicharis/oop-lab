@@ -1,4 +1,4 @@
-package Week10Lecture;
+package Week10Lecture.Files_ALL;
 import java.io.*;
 
 public class FileWriting {

@@ -1,4 +1,4 @@
-package Week10Lecture;
+package Week10Lecture.Reflections_ALL;
 
 import java.lang.reflect.Field;
 
@@ -46,13 +46,14 @@ class RealestMain {
         }
 
         // Accessing final attribute and changing it !
-
         for (Field access : firstField) {
             if (access.getName().equals("name")) {
                 access.setAccessible(true);
                 access.set(firstCat,"Micko Malisa");
             }
         }
+
+
 
         System.out.println(firstCat.getName());
 

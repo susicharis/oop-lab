@@ -1,4 +1,4 @@
-package Week10Lecture;
+package Week10Lecture.Iterators_ALL;
 
 import java.util.ArrayList;
 import java.util.Iterator;

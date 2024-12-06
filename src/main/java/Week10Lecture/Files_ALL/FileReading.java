@@ -1,4 +1,4 @@
-package Week10Lecture;
+package Week10Lecture.Files_ALL;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -24,7 +24,7 @@ public class FileReading {
 
         secondReader.close();
     }
-
+    // Streams -> transform file lines into ArrayList
     public static void readWholeFileList() throws IOException {
         BufferedReader thirdReader = new BufferedReader(new FileReader("C:\\Users\\Haris\\Desktop\\haris.txt"));
         List<String> allLines = thirdReader.lines().collect(Collectors.toList());
