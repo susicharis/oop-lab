@@ -1,0 +1,24 @@
+@Override
+    public boolean hasNext() {
+        while(currentIndex < playlist.size()) {
+            if(playlist.get(currentIndex).getGenre().equals(targetGenre)) {
+                return true;
+            } currentIndex++;
+        } return false;
+    }
+
+UZMI TRENUTNI INDEX SA LISTE PLAYLIST, UZMI NJEN ZANR JER PO TOME SORITRAMO, I AKO JE ISTO(EQUALS - UPOREDJUJE JE) KAO I TARGET ZANR KOJI MI TRAZIMO, MOLIM TE VRATI TURE
+POSTO MORAMO ZA SVAKU ITERACIJU, POVECAVAMO PO 1 (CURRENTINDEX++), KAKO BI ISLO NA SLJEDECI ELEMENT
+U OBRNUTOM SLUCAJU, VRATI FALSE !!!
+
+@Override
+    public String toString() {
+        return "Title: " + this.title + " , Artist: " + this.artist + " , Genre: " + this.genre;
+    }
+
+title,artist,genre SU ATRIBUTI OBJEKTA SONG
+POSTO IH STAVLJAMO U LISTU KAD ISPISEMO DIREKTNO ONO CE ISPISATI SAMO HASH OBJEKTA
+Kad stavljamo objekte u kolekciju kao sto je List<Song>, i zelimo da ih prikazemo, "toString()" metoda je KLJUCNA !!
+
+playlist.add(new Songs("Song 1","Eminem","Rap"));
+NOVI OBJEKAT TIPA SONG - I SVAKI PUT GA KREIRAMO KAD KORISTIMO new Song KREIRAMO NOVI OBJEKAT
