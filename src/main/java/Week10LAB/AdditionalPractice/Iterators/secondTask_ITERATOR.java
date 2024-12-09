@@ -1,16 +1,16 @@
-package Week10LAB.AdditionalPractice;
+package Week10LAB.AdditionalPractice.Iterators;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-class Song3 {
+class Song2 {
     private String title;
     private String artist;
     private String genre;
 
-    public Song3(String title, String artist, String genre) {
+    public Song2(String title, String artist, String genre) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -44,50 +44,53 @@ class Song3 {
 
 }
 
-class TitleLengthFilterIterator implements Iterator<Song3> {
-    List<Song3> playlist;
+class MultiCriteriaFilterIterator implements Iterator<Song2> {
+    List<Song2> playlist;
+    String targetGenre;
     String targetArtist;
     int currentIndex = 0;
 
-    public TitleLengthFilterIterator(List<Song3> playlist, String targetArtist) {
+
+    public MultiCriteriaFilterIterator(List<Song2> playlist, String targetGenre, String targetArtist) {
         this.playlist = playlist;
+        this.targetGenre = targetGenre;
         this.targetArtist = targetArtist;
     }
 
     @Override
     public boolean hasNext() {
         while(currentIndex < playlist.size()) {
-            Song3 song = playlist.get(currentIndex);
-            if(song.getArtist().equals(targetArtist) && song.getTitle().length() > 5) {
+            if (playlist.get(currentIndex).getGenre().equals(targetGenre) && playlist.get(currentIndex).getArtist().equals(targetArtist)) {
                 return true;
             } currentIndex++;
-
-
         } return false;
     }
 
     @Override
-    public Song3 next() {
-        if(hasNext()) {
+    public Song2 next() {
+        if (hasNext()) {
             return playlist.get(currentIndex++);
         } else
             throw new NoSuchElementException();
     }
 
 }
-
-class Main03 {
+class Main02 {
     public static void main(String[] args) {
-        List<Song3> playlist = new ArrayList<>();
-        playlist.add(new Song3("FRANCHISE","Travis Scott","Rap"));
-        playlist.add(new Song3("EYES","Travis Scott","Rap"));
-        playlist.add(new Song3("SKELETONS","Travis Scott","Rap"));
-        playlist.add(new Song3("5AM","Travis Scott","Rap"));
+        List<Song2> playlist = new ArrayList<>();
+        Song2 firstSong = new Song2("Ljubav","Divlja Jagoda","Chill");
+        Song2 secondSong = new Song2("Bol","Divlja Jagoda","Chill");
+        Song2 thirdSong = new Song2("Bol","Bijelo Dugme","Chill");
+        Song2 fourthSong = new Song2("Love the way you lie","Eminem","Rap");
 
-        TitleLengthFilterIterator random = new TitleLengthFilterIterator(playlist,"Travis Scott");
-        while(random.hasNext()) {
-            System.out.println(random.next());
+        playlist.add(firstSong);
+        playlist.add(secondSong);
+        playlist.add(thirdSong);
+        playlist.add(fourthSong);
+
+        MultiCriteriaFilterIterator first = new MultiCriteriaFilterIterator(playlist,"Chill","Divlja Jagoda");
+        while(first.hasNext()) {
+            System.out.println(first.next());
         }
-
     }
 }

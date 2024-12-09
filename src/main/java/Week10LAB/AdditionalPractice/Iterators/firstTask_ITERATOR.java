@@ -1,16 +1,17 @@
-package Week10LAB.AdditionalPractice;
+package Week10LAB.AdditionalPractice.Iterators;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-class Song2 {
+class Songs {
     private String title;
     private String artist;
     private String genre;
 
-    public Song2(String title, String artist, String genre) {
+    public Songs(String title, String artist, String genre) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -39,35 +40,34 @@ class Song2 {
 
     @Override
     public String toString() {
-        return "Title: " + this.title + " , Genre: " + this.genre + " , Artist: " + this.artist;
+        return "Title: " + this.title + " , Artist: " + this.artist + " , Genre: " + this.genre;
     }
+
 
 }
 
-class MultiCriteriaFilterIterator implements Iterator<Song2> {
-    List<Song2> playlist;
-    String targetGenre;
+class ArtistFilterIterator implements Iterator<Songs> {
+    List<Songs> playlist;
     String targetArtist;
     int currentIndex = 0;
 
-
-    public MultiCriteriaFilterIterator(List<Song2> playlist, String targetGenre, String targetArtist) {
+    public ArtistFilterIterator(List<Songs> playlist, String targetArtist) {
         this.playlist = playlist;
-        this.targetGenre = targetGenre;
         this.targetArtist = targetArtist;
     }
 
     @Override
     public boolean hasNext() {
         while(currentIndex < playlist.size()) {
-            if (playlist.get(currentIndex).getGenre().equals(targetGenre) && playlist.get(currentIndex).getArtist().equals(targetArtist)) {
+            if (playlist.get(currentIndex).getArtist().equals(targetArtist)) {
                 return true;
             } currentIndex++;
+
         } return false;
     }
 
     @Override
-    public Song2 next() {
+    public Songs next() {
         if (hasNext()) {
             return playlist.get(currentIndex++);
         } else
@@ -75,20 +75,18 @@ class MultiCriteriaFilterIterator implements Iterator<Song2> {
     }
 
 }
-class Main02 {
+
+class Main01 {
     public static void main(String[] args) {
-        List<Song2> playlist = new ArrayList<>();
-        Song2 firstSong = new Song2("Ljubav","Divlja Jagoda","Chill");
-        Song2 secondSong = new Song2("Bol","Divlja Jagoda","Chill");
-        Song2 thirdSong = new Song2("Bol","Bijelo Dugme","Chill");
-        Song2 fourthSong = new Song2("Love the way you lie","Eminem","Rap");
+        List<Songs> playlist = new ArrayList<>();
+        playlist.add(new Songs("Song 1","Eminem","Rap"));
+        playlist.add(new Songs("Song 2", "Eminem","Rap"));
+        playlist.add(new Songs("Song 3", "Eminem","Rap"));
+        playlist.add(new Songs("Song 4", "Eminem2","Rap"));
+        playlist.add(new Songs("Song 5", "Eminem2","Rap"));
 
-        playlist.add(firstSong);
-        playlist.add(secondSong);
-        playlist.add(thirdSong);
-        playlist.add(fourthSong);
+        ArtistFilterIterator first = new ArtistFilterIterator(playlist,"Eminem");
 
-        MultiCriteriaFilterIterator first = new MultiCriteriaFilterIterator(playlist,"Chill","Divlja Jagoda");
         while(first.hasNext()) {
             System.out.println(first.next());
         }

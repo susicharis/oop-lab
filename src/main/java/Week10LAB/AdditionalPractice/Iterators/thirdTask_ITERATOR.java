@@ -1,17 +1,16 @@
-package Week10LAB.AdditionalPractice;
-
+package Week10LAB.AdditionalPractice.Iterators;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-class Songs {
+class Song3 {
     private String title;
     private String artist;
     private String genre;
 
-    public Songs(String title, String artist, String genre) {
+    public Song3(String title, String artist, String genre) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -40,18 +39,17 @@ class Songs {
 
     @Override
     public String toString() {
-        return "Title: " + this.title + " , Artist: " + this.artist + " , Genre: " + this.genre;
+        return "Title: " + this.title + " , Genre: " + this.genre + " , Artist: " + this.artist;
     }
-
 
 }
 
-class ArtistFilterIterator implements Iterator<Songs> {
-    List<Songs> playlist;
+class TitleLengthFilterIterator implements Iterator<Song3> {
+    List<Song3> playlist;
     String targetArtist;
     int currentIndex = 0;
 
-    public ArtistFilterIterator(List<Songs> playlist, String targetArtist) {
+    public TitleLengthFilterIterator(List<Song3> playlist, String targetArtist) {
         this.playlist = playlist;
         this.targetArtist = targetArtist;
     }
@@ -59,16 +57,18 @@ class ArtistFilterIterator implements Iterator<Songs> {
     @Override
     public boolean hasNext() {
         while(currentIndex < playlist.size()) {
-            if (playlist.get(currentIndex).getArtist().equals(targetArtist)) {
+            Song3 song = playlist.get(currentIndex);
+            if(song.getArtist().equals(targetArtist) && song.getTitle().length() > 5) {
                 return true;
             } currentIndex++;
+
 
         } return false;
     }
 
     @Override
-    public Songs next() {
-        if (hasNext()) {
+    public Song3 next() {
+        if(hasNext()) {
             return playlist.get(currentIndex++);
         } else
             throw new NoSuchElementException();
@@ -76,19 +76,18 @@ class ArtistFilterIterator implements Iterator<Songs> {
 
 }
 
-class Main01 {
+class Main03 {
     public static void main(String[] args) {
-        List<Songs> playlist = new ArrayList<>();
-        playlist.add(new Songs("Song 1","Eminem","Rap"));
-        playlist.add(new Songs("Song 2", "Eminem","Rap"));
-        playlist.add(new Songs("Song 3", "Eminem","Rap"));
-        playlist.add(new Songs("Song 4", "Eminem2","Rap"));
-        playlist.add(new Songs("Song 5", "Eminem2","Rap"));
+        List<Song3> playlist = new ArrayList<>();
+        playlist.add(new Song3("FRANCHISE","Travis Scott","Rap"));
+        playlist.add(new Song3("EYES","Travis Scott","Rap"));
+        playlist.add(new Song3("SKELETONS","Travis Scott","Rap"));
+        playlist.add(new Song3("5AM","Travis Scott","Rap"));
 
-        ArtistFilterIterator first = new ArtistFilterIterator(playlist,"Eminem");
-
-        while(first.hasNext()) {
-            System.out.println(first.next());
+        TitleLengthFilterIterator random = new TitleLengthFilterIterator(playlist,"Travis Scott");
+        while(random.hasNext()) {
+            System.out.println(random.next());
         }
+
     }
 }

@@ -1,35 +1,44 @@
 package Week10LAB;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.*;
 
 class Events {
 
-    // Method to generate a file with random event records
     public void generateEventsFile(String filename, int numberOfRecords) {
         Random random = new Random();
         String[] eventTypes = {"Login", "Logout", "Purchase", "ViewPage", "Error"};
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        List<String> events = new ArrayList<>();
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             for (int i = 0; i < numberOfRecords; i++) {
 
-                long currentTime = System.currentTimeMillis() - random.nextInt(1000000000);
-                Date randomDate = new Date(currentTime);
-                String timestamp = dateFormat.format(randomDate);
+
+                Date currentDate = new Date();
+
+
+                int randomDays = random.nextInt(30);  // Nasumičan broj dana (0-30)
+                int randomHours = random.nextInt(24); // Nasumičan broj sati (0-23)
+                int randomMinutes = random.nextInt(60); // Nasumičan broj minuta (0-59)
+
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(currentDate);
+                calendar.add(Calendar.DAY_OF_YEAR, -randomDays); // Oduzimanje nasumičnih dana
+                calendar.add(Calendar.HOUR_OF_DAY, -randomHours); // Oduzimanje nasumičnih sati
+                calendar.add(Calendar.MINUTE, -randomMinutes); // Oduzimanje nasumičnih minuta
+
+
+                Date randomDate = calendar.getTime();
+                String timestamp = dateFormat.format(randomDate); // Formatiranje datuma u željeni oblik
 
 
                 String eventType = eventTypes[random.nextInt(eventTypes.length)];
-
-
                 int userId = random.nextInt(1000);
 
 
                 String event = "Timestamp: " + timestamp + " | Event Type: " + eventType + " | User ID: " + userId;
-
-
                 writer.write(event);
                 writer.newLine();
             }
@@ -37,7 +46,6 @@ class Events {
             e.printStackTrace();
         }
     }
-
 
     public void printEventsFromFile(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -49,7 +57,6 @@ class Events {
             e.printStackTrace();
         }
     }
-
 
     public ArrayList<String> readEventsFromFile(String filename) {
         ArrayList<String> events = new ArrayList<>();
@@ -68,14 +75,11 @@ class Events {
 
         Events events = new Events();
 
-
         String filename = "events.txt";
         events.generateEventsFile(filename, 10);
 
-
         System.out.println("Printing events from the file:");
         events.printEventsFromFile(filename);
-
 
         ArrayList<String> eventRecords = events.readEventsFromFile(filename);
         System.out.println("\nReading events into an ArrayList:");
