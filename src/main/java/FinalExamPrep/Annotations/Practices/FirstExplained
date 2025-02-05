@@ -1,0 +1,96 @@
+Method method = this.getClass().getMethod("sendMessage", User.class);
+
+* "this" pisemo jer referira na trenutnu instancu klase unutar koje se metoda izvrsava
+  "this" ukazuje na instancu klase MessagingSystem, jer se metoda sendMessage nalazi unutar te klase
+  Pisanje "this" umjesto "MessagingSystem" je bolje jer nam omogucava dinamicku refleksiju na osnovu klase trenutnog objekta
+  Dinamcika refleksija znaci da kad koristimo "MessagingSystem", bukvalno samo sa njim radimo i uvijek ce iz te klase vracti,
+  a kad koristimo "this" i imamo jos neku klasu npr AdvancedMessagingSystem - koja extenda MessagingSystem
+
+* ".getMethod("sendMessage", User.class)" trazi metodu sa specificnim imenom i parametrom
+
+UserPermission userPermission = user.getClass().getAnnotation(UserPermission.class);
+* getAnnotation provjerava da li klasa AdminUser ili RegularUser imaju anotaciju @UserPermission
+* AKO IMA - REFLEKSIJA KREIRA INSTANCU TE ANOTACIJE
+  POMOCU TOGA PRISTUPAMO METODAMA UNUTAR ANOTACIJE
+
+
+----------------- FirstHelper.java ------------------------------->
+
+MessageSystem msg = new AdvancedMessageSystem();
+* Kreiramo instancu klase AdvancedMessageSystem, ali je cuvamo u instanci MessageSystem >> POLIMORFIZAM
+** Kad cuvamo instancu podklase (AdvancedMessageSystem) u instanci glavne klase(MessageSystem), a pozivamo metodu
+   koja je definisana u glavnoj klasi, JVM CE UVIJEK POZVATI OVERRIDANU METODU iz PODKLASE - ako postoji.
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@interface CanSendMessage {
+}
+
+
+@Target({ElementType.TYPE,ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@interface RequiresPermission {
+    String permissionLevel() default "admin";
+}
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@interface UserPermission {
+    String level() default "user";
+}
+
+abstract class User {
+    String username;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+}
+
+@UserPermission
+class RegularUser extends User {
+    public RegularUser(String username) {
+        super(username);
+    }
+}
+
+@UserPermission(level = "admin")
+class AdminUser extends User {
+    public AdminUser(String username) {
+        super(username);
+    }
+}
+
+class MessagingSystem {
+
+    @CanSendMessage
+    @RequiresPermission(permissionLevel = "admin")
+    public void sendMessage(User user) throws NoSuchMethodException {
+        Method method = this.getClass().getMethod("sendMessage",User.class);
+        if(!method.isAnnotationPresent(CanSendMessage.class)) {
+            System.out.println("This method is not allowed to send message.");
+        }
+
+        UserPermission userPermission = user.getClass().getAnnotation(UserPermission.class);
+        if(!userPermission.level().equals("admin")) {
+            System.out.println("User " + user.getUsername() + " is not allowed to send messages");
+        } else {
+            System.out.println("Admin User " + user.getUsername() + " sent a message");
+        }
+    }
+
+
+    public static void main(String[] args) throws NoSuchMethodException {
+        RegularUser regularUser = new RegularUser("Haris");
+        AdminUser adminUser = new AdminUser("Becir");
+
+        MessagingSystem messagingSystem = new MessagingSystem();
+
+        messagingSystem.sendMessage(regularUser);
+        messagingSystem.sendMessage(adminUser);
+    }
+}
